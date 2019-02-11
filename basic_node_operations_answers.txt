@@ -1,0 +1,190 @@
+# Exercises
+
+>Create a file called basic_node_operations_answers.txt. Put the answers to numbers 1, 2 and 6 in the file. Submit bash.js, commands.js and basic_node_operations_answers.txt.
+
+>Questions
+
+1. Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+
+Answer:
+  a. sort: This was interesting because it did not sort the way I imagined it would. It first, grouped all the lines together according to how far indented they are in the file. Then, it sorted each group alphabetically. I just expected it to sort each line alphabetically without a care as to how it's indented. This is the output:
+  $ sort commands.js
+
+
+
+
+
+           done(data);
+           if (err) throw err;
+       const fileName = fullPath[0];
+       done(userInput);
+       fs.readFile(fileName, (err, data) => {
+       });
+    break;
+    break;
+    commandLibrary.cat(userInputArray.slice(1));
+    commandLibrary.echo(userInputArray.slice(1).join(" "));
+    process.stdout.write('\nprompt > ');
+    process.stdout.write(output);
+   "cat": function(fullPath) {
+   "echo": function(userInput) {
+   //the cat command
+   //we will add the functionality of echo next within the object commandLibrary
+   },
+  //the echo command
+  case "cat":
+  case "echo":
+  const command = userInputArray[0];
+  const userInputArray = userInput.split(" ");
+  switch (command) {
+ //parses the user input to understand which command was typed
+ }
+//where we will store our commands
+//where we will store the logic of our commands
+//write out data
+const commandLibrary = {
+const fs = require("fs");
+function done(output) {
+function evaluateCmd(userInput) {
+module.exports.commandLibrary = commandLibrary;
+module.exports.evaluateCmd = evaluateCmd;
+}
+}
+}
+};
+
+
+  b. wc: 43 119 1084. 43 being the number of lines. 119 is referring to the number of words and 1084 being the number of characters in this file.
+
+  c. uniq: This showed an output of the whole commands.js file since every single line in this file is unique.
+
+2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+
+I did: sort commands.js | uniq and got a more condensed output then the sort command shown in question 1. This was because it removed any line that was an exact copy of the line above it. For example, in the original sort command you'd see that there are two "break;" lines but in the output shown below there is only one "break;". See below.:
+
+$ sort commands.js | uniq
+
+           done(data);
+           if (err) throw err;
+       const fileName = fullPath[0];
+       done(userInput);
+       fs.readFile(fileName, (err, data) => {
+       });
+    break;
+    commandLibrary.cat(userInputArray.slice(1));
+    commandLibrary.echo(userInputArray.slice(1).join(" "));
+    process.stdout.write('\nprompt > ');
+    process.stdout.write(output);
+   "cat": function(fullPath) {
+   "echo": function(userInput) {
+   //the cat command
+   //we will add the functionality of echo next within the object commandLibrary
+   },
+  //the echo command
+  case "cat":
+  case "echo":
+  const command = userInputArray[0];
+  const userInputArray = userInput.split(" ");
+  switch (command) {
+ //parses the user input to understand which command was typed
+ }
+//where we will store our commands
+//where we will store the logic of our commands
+//write out data
+const commandLibrary = {
+const fs = require("fs");
+function done(output) {
+function evaluateCmd(userInput) {
+module.exports.commandLibrary = commandLibrary;
+module.exports.evaluateCmd = evaluateCmd;
+}
+};
+
+Then because I was curious I did sort commands.js | uniq | wc and got 36 116 1065 which is less than the original wc since the uniq command removed all the duplicates.
+
+> Programming Questions
+Implement the head command in the commands.js file. The head command outputs the first n lines of a file (you may decide what n is). This function will be similar to cat in structure so it will be helpful to reference.
+
+Implement the tail command in the commands.js file. The tail command is the inverse of the head command. It outputs the last n lines of a file (you may decide what n is).
+It is possible that a user will input a non-existent command to our bash shell. Within commands.js create an errorHandler function which will output an error message if the command cannot be found.
+
+Hint: Use the default: case in your switch statement.
+
+6. In this checkpoint, you encountered built-in JavaScript methods as well as the new ES6 syntax. Review the information below before attempting the programming challenge.
+
+Arrow Functions =>: An Alternative Way to Write Functions
+//For functions with one argument
+// ES5
+var value = variableName.functionName(function (element) {
+   return element.doSomething();
+});
+// ES6
+var value = variableName.functionName(element => element.doSomething());
+
+//For functions with multiple arguments or no arguments
+// ES5
+var value = variableName.functionName(function (a,b) {
+   return a + b;
+}, 0);
+// ES6
+var value = variableName.functionName((a, b) => a + b, 0);
+Reverse String
+
+Given a string, reverse the order of characters in each word within a sentence while maintaining the original word order and whitespace and return the string. To improve your problem-solving experience, use the suggested functions to solve the problem.
+
+Example
+Input: "I'm learning to program algorithms!"
+Output: "m'I gninrael ot margorp !smhtirogla"
+
+Hint: Look at the examples above to figure out how to refactor your forEach loop to use an arrow function.
+
+Concepts Arrow Function, JavaScript Functions
+
+Suggested Functions
+
+split()
+
+stringName.split(separator)
+Splits a string into an array of substrings, and returns the new array. The separator specifies how to split the string. If an empty string ('') is used as the separator (stringName.split('')) the string is split between each character. For example, 'Hello World'.split('') -> ['H','e','l','l','o', ' ', 'W', 'o', 'r', 'l', 'd']. If no separator is used, then the entire string will be returned as an array with one element. For example, 'Hello World'.split() -> ['Hello World']. Note that the split function does not change the original string so you must assign the result to a variable to keep the result.
+
+forEach()
+
+arrayName.forEach((currentItem) => {
+//your iterator
+})
+The forEach() method executes a provided function once for each array element.
+
+let arr = ['I', 'study', 'at', 'Bloc'];
+arr.forEach((element) => {
+ console.log(element);
+});
+// The above code would print, 'I', 'study', 'at', 'Bloc', to the console.
+push()
+
+arrayName.push(element)
+Adds new items to the end of an array and returns the new length.
+
+reverse()
+
+arrayName.reverse();
+Reverses an array in place. The first element of the array will become the last, and the last array element will become the first.
+
+join()
+
+arrayName.join(separator)
+Joins all elements of an array into a string. The separator specifies a string to separate each element of the array by. If omitted, the array elements are seperated with a comma (','). Note that the join function does not change the original array so you must assign the result to a variable to keep the result.
+
+let arr = ['Hello', 'World'];
+arr.join(); // 'Hello,World'
+arr.join(''); // 'HelloWorld'
+arr.join(' '); // 'Hello World'
+Starter Code
+
+
+Answer:
+function reverseString(inputString) {
+   let result = inputString.split('').reverse().join('').split(' ').reverse().join(' ');
+   return result;
+}
+console.log(reverseString("I'm learning to program algorithms!"));
+//output: "m'I gninrael ot margorp !smhtirogla"
